@@ -1,0 +1,42 @@
+﻿@model IEnumerable<expanse_Tracker.Models.ExpenseCategory>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-12 m-2">
+        <h2>Category List</h2>
+        <div class="d-flex justify-content-end mb-2">
+            <a asp-action="Create" class="btn btn-primary " title="Create new Category">+</a>
+        </div>
+        <div>
+            <table class="table table-bordered table-striped table-sm table-hover">
+                <thead class="bg-info">
+                    <tr>
+                        <th>Category Id</th>
+                        <th>Category Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(x => item.Id)</td>
+                            <td>@Html.DisplayFor(x => item.CategoryName)</td>
+                            <td>
+                                <a class="btn btn-outline-info" asp-controller="Categories" asp-route-id="@item.Id" asp-action="Edit">Edit</a>&nbsp;
+                                <a class="btn btn-outline-danger" asp-controller="Categories" asp-route-id="@item.Id" asp-action="Delete">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <span>Total Category: @Model.Count() Categories</span>
+        </div>
+    </div>
+</div>
+
+

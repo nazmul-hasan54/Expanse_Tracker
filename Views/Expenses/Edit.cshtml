@@ -1,0 +1,54 @@
+﻿@model expanse_Tracker.Models.Expanses
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="CreateorEdit" asp-controller="Expenses" method="post">
+            <h2>Update Expenses</h2>
+            <input asp-for="ExpansesId" type="hidden" />
+            <div class="row mb-2">
+                <label class="col-form-label col-2">Expense Category</label>
+                <div class="col-6">
+                    <select asp-for="CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.categories,"Id","CategoryName"))">
+                        <option selected="selected" value="0">--Select On--</option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="CategoryId"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <label asp-for="Date" class="col-form-label col-2">Expense Date</label>
+                <div class="col-6">
+                    <input type="date" asp-for="Date" id="expenseDate" class="form-control" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <label asp-for="Amount" class="col-form-label col-2">Amount</label>
+                <div class="col-6">
+                    <input type="number" asp-for="Amount" class="form-control" />
+                </div>
+                <div class="col-4">
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-10 offset-2">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+        <div class="mb-4">
+            <a asp-action="Index" asp-controller="Expenses" class="btn btn-outline-info">Back List</a>
+        </div>
+    </div>
+</div>
+
+
+
